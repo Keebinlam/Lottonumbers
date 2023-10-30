@@ -4,5 +4,30 @@ import pandas
 import math
 
 df = pandas.read_csv(
-    "/Users//Desktop/Python project/Projects/files/Lottery_Powerball_Winning_Numbers__Beginning_2010.csv")
+
+
+df = pandas.DataFrame(masterlist)
+
+# sorting the numbers in the winning numbers column to be in order
+df['Winning Numbers'] = df['Winning Numbers'].apply(
+    lambda x: ' '.join(map(str, sorted(map(int, x.split())))))
+
+# splitting the winning numbers column to be their own column
+df[['Number1', 'Number2', 'Number3', 'Number4', 'Number5', 'Number6']
+   ] = df['Winning Numbers'].str.split(expand=True)
+df = df[['Draw Date', 'Number1', 'Number2', 'Number3',
+         'Number4', 'Number5', 'Number6', 'Multiplier']]
+
 print(df)
+
+# found out for each column, which number is the most frequent
+most_common_number = {}
+for col in df.columns:
+    if col.startswith('Number'):
+        most_common = df[col].mode().values[0]
+        most_common_number[col] = most_common
+
+print(f'Most common Numbers are: {most_common_number}')
+# most common multiplier
+most_common_multiplier = df['Multiplier'].mode().values[0]
+print(f'Most common Multiplier is {most_common_multiplier}')

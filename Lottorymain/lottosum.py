@@ -5,3 +5,4 @@ import matplotlib.pyplot as plt
 masterlist = pandas.read_csv(path)
 
 df = pandas.DataFrame(masterlist)
+

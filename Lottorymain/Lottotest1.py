@@ -31,3 +31,20 @@ print(f'Most common Numbers are: {most_common_number}')
 # most common multiplier
 most_common_multiplier = df['Multiplier'].mode().values[0]
 print(f'Most common Multiplier is {most_common_multiplier}')
+
+
+# split_numbers = df['Winning Numbers'].str.split().apply(
+#     lambda x: [int(num) for num in x])
+
+# df['PB'] = split_numbers.apply(lambda x: x.pop())
+
+# sorted_values = split_numbers.apply(lambda x: sorted(x[:5]))
+
+# sorted_df = sorted_values.apply(
+#     lambda x: ' '.join(map(str, x))).str.split(expand=True)
+# df = pandas.concat([df, sorted_df], axis=1)
+# df.columns = ['Draw Date', 'Winning Numbers',
+#               'Multiplier', 'PB', 'Number1', 'Number2', 'Number3', 'Number4', 'Number5']
+
+# # Print the final DataFrame
+# print(df
